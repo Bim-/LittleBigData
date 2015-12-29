@@ -1,4 +1,4 @@
-import datetime
+from datetime import *
 
 bfile = open('birdtext.txt','r') # Note: I changed the name of the file!
 readall = bfile.readlines()
@@ -16,8 +16,8 @@ For Task 2 we need the datetime module, this makes arithmetics with dates and ti
 Since our datetime objects are present as strings in date_time list, we need the code in line 29 to make
 computations with timedelta possible (this particular command specifies the time we want to add).
 '''
-   
+
 lundtime = []
 for i in range(len(date_time)):
-    lundtime.append(datetime.datetime.strptime(date_time[i],"%Y-%m-%d %H:%M:%S.%f") + datetime.timedelta(hours=1))
+    lundtime.append(datetime.strptime(date_time[i],"%Y-%m-%d %H:%M:%S.%f") + timedelta(hours=1))
 print(lundtime[1])      # returns 2015-01-25 15:08:05.036915 , as expected (UTC + 1).
