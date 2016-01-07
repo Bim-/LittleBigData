@@ -22,17 +22,22 @@ in ipython console do the following:
 # intervals for plot. total per hour, day...
 
 
+# intervals for plot. total per hour, day...
+
+
 def interval(timeUnit):
-    if timeUnit not in {'month', 'week', 'day', 'hour'}:
-        raise Exception("interval must be 'month', 'week', 'day' or 'hour'")
+    if timeUnit not in {'month', 'day', 'hour'}:
+        raise Exception("interval must be 'month', 'day' or 'hour'")
     period = timeUnit
 
     totaldict = {}
     k_time = set()
 
     # import datetime differently in mattias task 1 2 (done)
-    prev = datetime(1984, 12, 2)
 
+    prev = datetime(1984, 12, 2) # we need to have a month/week/day to make the following fork.
+
+    # the year doesn't matter since we're aways talking about 2015.
     for k in lundtime:
 
         if k.month == prev.month and (period is 'month' or (
@@ -51,14 +56,13 @@ def interval(timeUnit):
 
         prev = k
 
+# Need to add the last k since the program since the forloop has been exhausted.
+#(It doesn't know the day is over/this is the last line of information).
+
     totaldict[prev]\
         = {'{}total'.format(period): sum(word[i]['diff'] for i in k_time)}
 
     return totaldict
-
-
-# generating plot values. needs some tweaking. i think we could ask
-# for values in a user dialog and then call this function.
 
 
 def userplot(start, end, Interval):
@@ -73,6 +77,11 @@ def userplot(start, end, Interval):
             yl.append(timePeriod[time]['{}total'.format(Interval)])
             xl.append(time)
 
-    bar(xl, yl)
-
+    if Interval=='hour':
+        intv = 0.02
+    elif Interval=='day':
+        intv = 0.2
+    else:
+        intv = 2
+    bar(xl, yl,width=intv)
     return show()
