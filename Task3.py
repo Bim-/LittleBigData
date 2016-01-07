@@ -6,11 +6,13 @@ from Tasks_1_and_2 import lundtime, counter
 
 diff = []
 # j has to be equal to counter[0]
-j = 70
+j = counter[0]
 
 for i in counter:
     delta = abs(i-j)
-    if delta > 8:
+    if delta > 1000:
+        delta = 0    
+    elif delta > 8:
         delta = 1
     diff.append(delta)
     j = i
