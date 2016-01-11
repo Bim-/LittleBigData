@@ -9,7 +9,7 @@ for line in readall:
                             # error lines only have 3 spaces. Now those problematic lines won't cause trouble).
     date_time.append(lsp[0])
     counter.append(int(lsp[1])) # making the counter an integer eliminates the '/n' and eventual extra ' '.
-print(date_time[1])     # returns 2015-01-25 14:08:05.036915
+#print(date_time[1])     # returns 2015-01-25 14:08:05.036915
 
 '''
 For Task 2 we need the datetime module, this makes arithmetics with dates and time possible.
@@ -20,4 +20,4 @@ computations with timedelta possible (this particular command specifies the time
 lundtime = []
 for i in range(len(date_time)):
     lundtime.append(datetime.strptime(date_time[i],"%Y-%m-%d %H:%M:%S.%f") + timedelta(hours=1))
-print(lundtime[1])      # returns 2015-01-25 15:08:05.036915 , as expected (UTC + 1).
+#print(lundtime[1])      # returns 2015-01-25 15:08:05.036915 , as expected (UTC + 1).
