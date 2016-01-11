@@ -19,7 +19,7 @@ def interval(period, timeUnit):
 
     # import datetime differently in mattias task 1 2 (done)
 
-    prev = datetime(1984, 12, 2)  # we need to have a month/week/day to make the following fork.
+    prev = datetime(1984, 12, 2)  # we need to have a starting month/week/day to make the following work.
 
     # the year doesn't matter since we're aways talking about 2015.
     for k in lundtime:
@@ -42,7 +42,7 @@ def interval(period, timeUnit):
 
         prev = k
 
-# Need to add the last k since the program since the forloop has been exhausted.
+# Need to add the last k since the forloop has been exhausted.
 # (It doesn't know the day is over/this is the last line of information).
 
     totaldict[prev]\
