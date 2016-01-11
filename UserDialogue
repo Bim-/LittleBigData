@@ -1,0 +1,48 @@
+from datetime import *
+from Task4 import *
+
+# start date
+
+month = int(input("give me a month!\n"))
+
+day = int(input("give me a day!\n"))
+
+hour = int(input("give me an hour!\n"))
+
+print("give me a break!")
+
+a = datetime(2015, month, day, hour)
+
+print("your start date is {}".format(a.ctime()))
+
+
+# end date
+
+month2 = int(input("give me a month!\n"))
+
+day2 = int(input("give me a day!\n"))
+
+hour2 = int(input("give me an hour!\n"))
+
+print("give me a break!")
+
+b = datetime(2015, month2, day2, hour2)
+
+print("your end date is {}".format(b.ctime()))
+
+c = input("what resolution do you want?\n")
+
+
+# c, as it is, confuses the userplot function and makes the info to plot on the axes disappear.
+
+d1='hour'
+d2='day'
+d3='month'
+if c == d1:
+    resol = 'hour'
+elif c == d2:
+    resol = 'day'
+else:
+    resol = 'month'
+
+userplot(a, b, resol)
