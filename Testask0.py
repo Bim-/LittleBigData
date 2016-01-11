@@ -1,19 +1,24 @@
-blj
-fs
+# -*- coding: utf-8 -*-
 
-for i in range(1, 4):
-    RD_1.append (DT[i][0:i])
+# change when file name changes!
+from Task3 import word, lundtime
+from datetime import *
+from matplotlib.pyplot import *
+from astral import *
 
-RD_2 = [DT[i][:i] for i in range(1, 4)]
+ggl = Astral(GoogleGeocoder)
+loc_ss = ggl.geocoder["Södra sandby"]
 
+a = datetime(2015, 3, 1)
+b = datetime(2015, 3, 6)
 
-"""
+yl = []
+xl = []
 
-# find zero of a function
-
-
-def bisec(f, interv, tol, maxit):
-    a = interv[0], b = interv[1]
-
-
-# check if interval is good
+for i in lundtime:
+    if a <= i <= b:
+        sun = loc_ss.solar_elevation(i)
+        yl.append(sun)
+        xl.append(i)
+        
+plot(xl, yl)
