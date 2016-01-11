@@ -19,16 +19,16 @@ def interval(period, timeUnit):
 
     # import datetime differently in mattias task 1 2 (done)
 
-    prev = datetime(1984, 12, 2)  # we need to have a starting month/week/day to make the following work.
-
+    prev = period[0] + timedelta(32)
+    
     # the year doesn't matter since we're aways talking about 2015.
-    for k in lundtime:
+    for Next in period:
 
-        if k.month == prev.month and (timeUnit is 'month' or (
-            k.day == prev.day and (timeUnit is 'day' or (
-                k.hour == prev.hour and timeUnit is 'hour')))):
+        if Next.month == prev.month and (timeUnit is 'month' or (
+            Next.day == prev.day and (timeUnit is 'day' or (
+                Next.hour == prev.hour and timeUnit is 'hour')))):
 
-            k_time.add(k)
+            k_time.add(Next)
             k_time.add(prev)
 
         elif len(k_time) > 0:
@@ -40,7 +40,7 @@ def interval(period, timeUnit):
 
             k_time.clear()
 
-        prev = k
+        prev = Next
 
 # Need to add the last k since the forloop has been exhausted.
 # (It doesn't know the day is over/this is the last line of information).
@@ -68,22 +68,23 @@ def userplot(start, end, Interval):
     xsun = []
 
     for time in timePeriod:
-        if start <= time <= end:
             yl.append(timePeriod[time]['{}total'.format(Interval)])
             xl.append(time)
-
-    for time in timePeriod:
-        if start <= time <= end:
             ysun.append(timePeriod[time]['sun'])
-            xsun.append(time)
+            xsun.append(time)           
+            '''sunelev = timePeriod[time]['sun']
+            if sunelev > -10.0:
+                ysun.append(sunelev)
+            else:
+                ysun.append(-10.0)'''            
 
     if Interval == 'hour':
         intv = 0.02
     elif Interval == 'day':
         intv = 0.2
     else:
-        intv = 2
+        intv = 3
     bar(xl, yl, width=intv)
-    bar(xsun, ysun, color='pink', alpha=0.4,  width=intv)
+    bar(xl, ysun, color='pink', alpha=0.4,  width=intv)
 
-    return show()
+    show()
